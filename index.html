@@ -14,8 +14,8 @@
         </div>
         <div class="main" ng-controller="MainController">
             <div class="container">
-                <p>{{ 3 + 2 }}</p>
                 <div class="inputItemsHolder">
+                    <h4>Enter amounts</h4>
                     <table id="inputItemsTable">
                         <tbody>
                             <tr>
@@ -35,10 +35,8 @@
                     </table>
                 </div>
                 <div class="Balances">
-                    <p>You currently have <span>{{ currentBalance }}</span> hours.</p>
-                    <p>Special Case? {{ specialCase }}</p>
-                    <p> You can accrue {{ totalAccrual }} hours this year.</p>
-                    
+                    <p ng-show="currentBalance !== null">You currently have <span>{{ currentBalance }}</span> hours.</p>
+                    <p ng-show="yearlyAccrual !== null"> You can accrue {{ totalAccrual }} hours this year.</p>
                 </div>
             </div>
         </div>

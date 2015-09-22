@@ -4,7 +4,7 @@ app.controller('MainController', ['$scope', function($scope){
     $scope.yearlyAccrual = null;
     $scope.specialCase = false;
     
-    $scope.totalAccrual = 0;
+    $scope.totalAccrual = null;
     
     $scope.updateTotalAccrual = function(){
         if($scope.specialCase == true) {
