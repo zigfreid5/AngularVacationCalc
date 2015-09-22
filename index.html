@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="VacationCalc">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
+        <link href="css/main.css" rel="stylesheet" />
+        <script src="js/shared/angular/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <h1>Autoliv Vacation Calculator</h1>
+            </div>
+        </div>
+        <div class="main" ng-controller="MainController">
+            <div class="container">
+                <p>{{ 3 + 2 }}</p>
+                <div class="inputItemsHolder">
+                    <table id="inputItemsTable">
+                        <tbody>
+                            <tr>
+                                <td class="question">Current Vacation Balance: </td>
+                                <td class="answer"><input type="number" ng-model="currentBalance" placeholder="80"/></td>
+                            </tr>
+                            <tr>
+                                <td class="question">Yearly Accrual: </td>
+                                <td class="answer"><input type="text" ng-change="updateTotalAccrual()" ng-model="yearlyAccrual" placeholder="80"/></td>
+                            </tr>
+                            <tr>
+                                <td class="question">*Special Case?</td>
+                                <td class="answer"><input type="checkbox" ng-model="specialCase" ng-click="updateTotalAccrual()"/></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="Balances">
+                    <p>You currently have <span>{{ currentBalance }}</span> hours.</p>
+                    <p>Special Case? {{ specialCase }}</p>
+                    <p> You can accrue {{ totalAccrual }} hours this year.</p>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/MainController.js"></script>
+    </body>
+</html>
