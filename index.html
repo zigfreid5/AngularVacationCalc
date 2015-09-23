@@ -7,40 +7,55 @@
         <script src="js/shared/angular/angular.min.js"></script>
     </head>
     <body>
-        <div class="header">
+        <header class="header">
             <div class="container">
                 <h1>Autoliv Vacation Calculator</h1>
             </div>
-        </div>
+        </header>
         <div class="main" ng-controller="MainController">
             <div class="container">
                 <div class="inputItemsHolder">
-                    <h4>Enter amounts</h4>
+                    <h2>Enter amounts</h2>
+                    <div id="drawLine"></div>
                     <table id="inputItemsTable">
                         <tbody>
                             <tr>
-                                <td class="question">Current Vacation Balance: </td>
-                                <td class="answer"><input type="number" ng-model="currentBalance" placeholder="80"/></td>
-                            </tr>
-                            <tr>
                                 <td class="question">Yearly Accrual: </td>
-                                <td class="answer"><input type="text" ng-change="updateTotalAccrual()" ng-model="yearlyAccrual" placeholder="80"/></td>
+                                <td class="answer"><input type="number" maxlength="3" ng-model="yearlyAccrual" ng-change="updateAccrualDependents()" placeholder="80"/></td>
                             </tr>
                             <tr>
+                                <td class="question">Current Vacation Balance: </td>
+                                <td class="answer"><input type="number" maxlength="3" ng-model="currentBalance" ng-change="updateBalanceDependents()" placeholder="80"/></td>
+                            </tr>
+                            <tr ng-hide="currentBalance < (yearlyAccrual + 80)">
                                 <td class="question">*Special Case?</td>
-                                <td class="answer"><input type="checkbox" ng-model="specialCase" ng-click="updateTotalAccrual()"/></td>
+                                <td class="answer"><input type="checkbox" ng-model="specialCase" ng-click="updateCarryOver()"/></td>
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
-                <div class="Balances">
-                    <p ng-show="currentBalance !== null">You currently have <span>{{ currentBalance }}</span> hours.</p>
-                    <p ng-show="yearlyAccrual !== null"> You can accrue {{ totalAccrual }} hours this year.</p>
+                <br/>
+                <div class="balances">
+                    <p ng-hide='yearlyAccrual == null || yearlyAccrual == ""'>You may carry over <span class="bold">{{ carryOver }}</span> hours to next year.</p>
+                    <p ng-hide='currentBalance == null || currentBalance == ""'>You currently have <span class="bold">{{ currentBalance }}</span> hours.</p>
+                    <p ng-hide='yearlyAccrual == null || yearlyAccrual == ""'>You have accrued <span class="bold">{{ accruedSoFar }}</span> hours this year.</p>
+                    <p ng-hide='yearlyAccrual == null || yearlyAccrual == ""'>You accrue <span class="bold">{{ weeklyAccrual }}</span> hours per week.</p>
+                    <p ng-hide="willHave == null">You will have <span class="bold">{{ willHave }}</span> hours by the end of the year.</p>
+                    <p ng-hide="mustUse == null">You must use <span class="bold">{{ mustUse }}</span> hours before the end of the year.</p>
                 </div>
+                <br>
+                <div ng-show="currentBalance >= (yearlyAccrual + 80)" class="footnotes">
+                    <aside class="specialNote">* Special Case is defined by having met the following criteria:</aside>
+                    <aside class="specialNote sublist">1. Your vacation balance exceeds your yearly accrual amount plus 80 hours</aside>
+                    <aside class="specialNote sublist">2. You have sustained this excess balance since June 2014</aside>
+                </div>
+
             </div>
         </div>
-        
+        <footer class="footer">
+            AngularJS Vacation Calculator
+        </footer>
         <!-- Modules -->
     <script src="js/app.js"></script>
 
