@@ -37,6 +37,7 @@
                 </div>
                 <br/>
                 <div class="balances">
+                    <h3 ng-show='yearlyAccrual == null || yearlyAccrual == ""'>Balances will be calculated here</h3>
                     <p ng-hide='yearlyAccrual == null || yearlyAccrual == ""'>You may carry over <span class="bold">{{ carryOver }}</span> hours to next year.</p>
                     <p ng-hide='currentBalance == null || currentBalance == ""'>You currently have <span class="bold">{{ currentBalance }}</span> hours.</p>
                     <p ng-hide='yearlyAccrual == null || yearlyAccrual == ""'>You have accrued <span class="bold">{{ accruedSoFar }}</span> hours this year.</p>
