@@ -41,7 +41,7 @@ html, body {
 
 .inputItemsHolder{
     float: left;
-    display: inline-block;
+    /*display: inline-block;*/
     padding: 25px;
     margin-top: 25px;
     outline: 2px lightgrey solid;
@@ -64,7 +64,7 @@ html, body {
 
 .balances {
     float: right;
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 12pt;
     margin-left: 5px;
     margin-top: 2px;
@@ -97,4 +97,35 @@ html, body {
  text-align: center;
  margin: 40px 0 40px;
  font-size: 14pt;
+}
+
+@media(max-width:800px)
+{
+    .container{
+        width: 80%;
+    }
+    
+    .inputItemsHolder{
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+    
+    #inputItemsTable{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .balances{
+        width: auto;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    .footnotes{
+        text-align: center;
+    }
 }

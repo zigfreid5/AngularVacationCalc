@@ -9,8 +9,6 @@ app.controller('MainController', ['$scope', function($scope){
     $scope.willHave = null;
     $scope.mustUse = null;
 
-
-    
     $scope.updateCarryOver = function(){
         if($scope.specialCase == true && $scope.yearlyAccrual !== null) {
             $scope.carryOver =  80 + parseInt($scope.yearlyAccrual, 10);
@@ -61,9 +59,6 @@ app.controller('MainController', ['$scope', function($scope){
             else $scope.mustUse = 0;
         }
     };
-
-
-
 
     function getWeekNumber(d) {
        d = new Date(+d);
